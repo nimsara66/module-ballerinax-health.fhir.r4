@@ -37,10 +37,6 @@ jobs:
           # Remove duplicates from the CHANGED_FILES_ARRAY
           declare -A UNIQUE_PATHS_MAP
           for file in "${CHANGED_FILES_ARRAY[@]}"; do
-            if [[ $file == $R4_PATTERN ]]; then
-              EXTRACTED_PATH=$(echo "$file" | cut -d '/' -f 1-2)
-            fi
-
             if [[ $EXTRACTED_PATH ]]; then
               UNIQUE_PATHS_MAP[$EXTRACTED_PATH]=1
             fi
