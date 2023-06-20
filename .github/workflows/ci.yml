@@ -7,7 +7,7 @@ on:
       - synchronize
 
 env:
-  R4_PATTERN: */*
+  R4_PATTERN: '*/*'
 
 jobs:
   setup:
