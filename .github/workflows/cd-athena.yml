@@ -1,4 +1,4 @@
-name: CD Athena
+name: CD AUBase410
 
 on:
   workflow_dispatch:
@@ -20,46 +20,46 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Ballerina Build Athena
+      - name: Ballerina Build AUBase410
         uses: ballerina-platform/ballerina-action@2201.5.0
         with:
           args:
             pack
         env:
-          WORKING_DIR: ./r4/athena
+          WORKING_DIR: ./aubase410
           JAVA_HOME: /usr/lib/jvm/default-jvm
 
-      - name: Push to Staging Athena
+      - name: Push to Staging AUBase410
         if: github.event.inputs.bal_central_environment == 'STAGE'
         uses: ballerina-platform/ballerina-action/@2201.5.0
         with:
           args:
             push
         env:
-          WORKING_DIR: ./r4/athena
+          WORKING_DIR: ./aubase410
           JAVA_HOME: /usr/lib/jvm/default-jvm
           BALLERINA_STAGE_CENTRAL: true
           BALLERINA_CENTRAL_ACCESS_TOKEN: ${{ secrets.BALLERINA_CENTRAL_STAGE_ACCESS_TOKEN }}
 
-      - name: Push to Dev Athena
+      - name: Push to Dev AUBase410
         if: github.event.inputs.bal_central_environment == 'DEV'
         uses: ballerina-platform/ballerina-action/@2201.5.0
         with:
           args:
             push
         env:
-          WORKING_DIR: ./r4/athena
+          WORKING_DIR: ./aubase410
           JAVA_HOME: /usr/lib/jvm/default-jvm
           BALLERINA_DEV_CENTRAL: true
           BALLERINA_CENTRAL_ACCESS_TOKEN: ${{ secrets.BALLERINA_CENTRAL_DEV_ACCESS_TOKEN }}      
 
-      - name: Push to Prod Athena
+      - name: Push to Prod AUBase410
         if: github.event.inputs.bal_central_environment == 'PROD'
         uses: ballerina-platform/ballerina-action/@2201.5.0
         with:
           args:
             push
         env:
-          WORKING_DIR: ./r4/athena
+          WORKING_DIR: ./aubase410
           JAVA_HOME: /usr/lib/jvm/default-jvm
           BALLERINA_CENTRAL_ACCESS_TOKEN: ${{ secrets.BALLERINA_CENTRAL_PROD_ACCESS_TOKEN }}

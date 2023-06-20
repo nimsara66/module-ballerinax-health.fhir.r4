@@ -61,7 +61,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       JAVA_OPTS: -Xmx4G
-    if: ${{ needs.setup.outputs.project-matrix != '[]' && needs.setup.outputs.project-matrix != '' }}
+    if: ${{ needs.setup.outputs.project-matrix != '[]' }}
     strategy:
       matrix:
         path: ${{ fromJson(needs.setup.outputs.project-matrix) }}
